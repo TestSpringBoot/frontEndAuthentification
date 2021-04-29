@@ -1,0 +1,25 @@
+<div class="container">
+    <header class="jumbotron">      
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th scope="col">Marque</th>
+          <th scope="col">Modele</th>
+          <th>Utilisateur qui commente</th>
+          <th scope ="col">Commentaire</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let com of commentaires; index as i">
+          <td>{{ com.voiture.marque }} </td>
+          <td>{{ com.voiture.modele }}</td>
+          <td>{{com.user.username}}</td>
+          <td>{{ com.detailsCommentaire}}</td>
+        </tr>
+        
+        </tbody>
+      </table>
+
+      
+    </header>
+  </div>

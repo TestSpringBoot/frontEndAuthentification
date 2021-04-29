@@ -1,0 +1,49 @@
+<div class="container">
+  <header class="jumbotron">
+    <h2>Liste des voitures</h2>
+
+    <h3>Il faut authentifier pour voir les commentaires et commenter une voiture</h3>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">Marque</th>
+        <th scope="col">Modele</th>
+        <th *ngIf="isLoggedIn"> Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let voiture of voitures; index as i">
+        <td>{{ voiture.marque }} </td>
+        <td>{{ voiture.modele }}</td>
+        <td *ngIf="isLoggedIn"><button class="btn btn-lg btn-outline-primary" (click)="getVoiture(voiture.id)" (click) ="open(content)">Commenter</button>
+          </td>
+      </tr>
+      
+      </tbody>
+    </table>
+      <ng-template #content let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Commenter une voiture</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+            <div class="form-group">
+              <label for="detailsCommentaire"><span class="req">*</span> Commentaire:</label>
+              <input required type="text"  name="detailsCommentaire" [(ngModel)]="commentaire.detailsCommentaire"
+               class="form-control" type="text" placeholder="entrer commentaire"/>
+            </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#actualiserListe" (click)="modal.close(saveCommentaire())">Enregister</button>
+      </div>
+    </ng-template>  
+
+
+
+  </header>
+</div>
